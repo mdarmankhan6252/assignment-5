@@ -2,18 +2,11 @@
 let decreaseSetNum = 7;
 let increaseSetNum = 1;
 let totalNum = 0;
-let x = 0;
+let clickCount = 0;
 const setNumbers = document.querySelectorAll('.setNumber');
 for(i = 0; i < setNumbers.length; i++){
    const setNumber = setNumbers[i];
-   setNumber.addEventListener('click', function(){
-      //condition part
-      if(x <= 3){
-         x++;
-      }
-      else{
-         alert('You have selected 4 tickets.');
-      }
+   setNumber.addEventListener('click', function(){     
 
       const title = setNumber.innerText;
       setNumber.classList.add('bg-[#1DD100]');
@@ -44,6 +37,15 @@ for(i = 0; i < setNumbers.length; i++){
       increaseSet.innerText = increaseSetNum;
       increaseSetNum++;
 
+      //alert part.
+
+      clickCount++;
+
+      if (clickCount > 4) {
+         alert('Wait bro');
+         setNumber.disabled = true;
+     }
+
       
 
    })
@@ -59,7 +61,7 @@ function apply(){
       console.log(grandTotal)
       grandTotalValue.innerText = grandTotal.toFixed(1);
       applyHidden.classList.add('hidden')
-   }else if(getCouponValue === "COUPLE20"){
+   }else if(getCouponValue === "Couple20"){
       if(totalNum >= 1100){
          const grandTotal = totalNum - (totalNum * 0.20);
       console.log(grandTotal)
